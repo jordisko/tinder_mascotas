@@ -1,5 +1,4 @@
 
-
 DROP SCHEMA IF EXISTS `baseDatosTinderPerros` ;
 
 CREATE SCHEMA IF NOT EXISTS `baseDatosTinderPerros` DEFAULT CHARACTER SET utf8 ;
@@ -30,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `baseDatosTinderPerros`.`Persona` (
   `fechaNacimientoPersona` DATE NULL,
   `direccionPersona` VARCHAR(45) NULL,
   `codigoPostalPersona` VARCHAR(5) NULL,
+  `fotos` VARCHAR(280) NULL,persona
   PRIMARY KEY (`idPersona`),
   INDEX `fk_Personas_Login_idx` (`Login_idLogin` ASC) VISIBLE,
   CONSTRAINT `fk_Personas_Login`
