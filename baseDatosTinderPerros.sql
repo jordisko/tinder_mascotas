@@ -25,11 +25,11 @@ CREATE TABLE IF NOT EXISTS `baseDatosTinderPerros`.`Persona` (
   `etiquetasMascota` VARCHAR(45) NULL,
   `numTelefono` INT(9) NULL,
   `Login_idLogin` INT NOT NULL,
-  `fotoPerfilPersona` VARCHAR(45) NULL,
+  `fotoPerfilPersona` LONGBLOB NULL,
   `fechaNacimientoPersona` DATE NULL,
   `direccionPersona` VARCHAR(45) NULL,
   `codigoPostalPersona` VARCHAR(5) NULL,
-  `fotos` VARCHAR(280) NULL,persona
+  `fotos`mascota LONGBLOB NULL,
   PRIMARY KEY (`idPersona`),
   INDEX `fk_Personas_Login_idx` (`Login_idLogin` ASC) VISIBLE,
   CONSTRAINT `fk_Personas_Login`
