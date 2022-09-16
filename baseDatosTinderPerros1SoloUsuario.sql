@@ -40,22 +40,23 @@ CREATE TABLE IF NOT EXISTS `basedatostinderperros2`.`Usuario` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-DROP TABLE IF EXISTS `basedatostinderperros2`.`Match` ;
+DROP TABLE IF EXISTS `basedatostinderperros2`.`Matches` ;
 
-CREATE TABLE IF NOT EXISTS `basedatostinderperros2`.`Match` (
-  `Usuario_id1` INT NOT NULL,
-  `Usuario_id2` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `basedatostinderperros2`.`Matches` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `usuarioid1` INT NOT NULL,
+  `usuarioid2` INT NOT NULL,
   `estado` VARCHAR(10) NULL,
-  PRIMARY KEY (`Usuario_id1`, `Usuario_id2`),
-  INDEX `fk_Usuario_has_Usuario_Usuario2_idx` (`Usuario_id2` ASC) VISIBLE,
-  INDEX `fk_Usuario_has_Usuario_Usuario1_idx` (`Usuario_id1` ASC) VISIBLE,
-  CONSTRAINT `fk_Usuario_has_Usuario_Usuario1`
-    FOREIGN KEY (`Usuario_id1`)
+  PRIMARY KEY (`id`),
+  INDEX `fk_Usuario_has_Usuario_usuarioid2_idx` (`usuarioid2` ASC) VISIBLE,
+  INDEX `fk_Usuario_has_Usuario_usuarioid1idx` (`usuarioid1` ASC) VISIBLE,
+  CONSTRAINT `fk_Usuario_has_Usuario_usuarioid1`
+    FOREIGN KEY (`usuarioid1`)
     REFERENCES `basedatostinderperros2`.`Usuario` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Usuario_has_Usuario_Usuario2`
-    FOREIGN KEY (`Usuario_id2`)
+  CONSTRAINT `fk_Usuario_has_Usuario_usuarioid2`
+    FOREIGN KEY (`usuarioid2`)
     REFERENCES `basedatostinderperros2`.`Usuario` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
@@ -73,8 +74,14 @@ INSERT INTO basedatostinderperros2.razamascota(nombreRaza)VALUES
 ("Chihuahua");
 
 
-INSERT INTO basedatostinderperros2.usuario(nombre,apellido,tipoUsuario,descripcion,etiquetasPersona,etiquetasMascota ,numeroTelefono ,fotoPerfil ,fotos,fechaNacimiento ,direccion ,codigoPostal,nombreUsuario ,contrasenya, correoElectronico) VALUES
-("jordi","perez","persona","hola buenos dias","activo","joven",687078172,"flskdjflsj","ldjfslkdjf","1980-08-08","calle 1234",08031,"jordi123","contrasenyaa12","jordicampos.97@gmail.com");
+INSERT INTO basedatostinderperros2.usuario(nombre,apellido,tipoUsuario,descripcion,etiquetasPersona,etiquetasMascota ,numeroTelefono ,fotoPerfil ,fotos,fechaNacimiento ,direccion ,codigoPostal,nombreUsuario,contrasenya, razamascota_nombreRaza ,correoElectronico) VALUES
+("jordi","perez","persona","hola buenos dias","activo","joven",687078172,"flskdjflsj","ldjfslkdjf","1980-08-08","calle 1234",08031,"jordi123","contrasenya12",NULL,"jordicampos.97@gmail.com"),
+("bobby","perez","mascota","muy amigable","muy activo","sociable",687078173,"fdsfdsf","dwewrwerw","2010-09-09","calle 12314214",08031,"bobby123","contrasenyaa12","labrador","bobby123@gmail.com");
 
-select * from usuario
+
+
+INSERT INTO basedatostinderperros2.matches(usuarioid1,usuarioid2,estado) VALUES
+(1,2,"aceptado");
+
+SELECT*FROM basedatostinderperros2.matches;
 
