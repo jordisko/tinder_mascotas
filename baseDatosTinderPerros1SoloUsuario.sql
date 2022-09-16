@@ -45,6 +45,7 @@ DROP TABLE IF EXISTS `basedatostinderperros2`.`Match` ;
 CREATE TABLE IF NOT EXISTS `basedatostinderperros2`.`Match` (
   `Usuario_id1` INT NOT NULL,
   `Usuario_id2` INT NOT NULL,
+  `estado` VARCHAR(10) NULL,
   PRIMARY KEY (`Usuario_id1`, `Usuario_id2`),
   INDEX `fk_Usuario_has_Usuario_Usuario2_idx` (`Usuario_id2` ASC) VISIBLE,
   INDEX `fk_Usuario_has_Usuario_Usuario1_idx` (`Usuario_id1` ASC) VISIBLE,
@@ -74,3 +75,5 @@ INSERT INTO basedatostinderperros2.razasmascota(nombreRaza)VALUES
 
 INSERT INTO basedatostinderperros2.usuario(nombre,apellido,tipoUsuario,descripcion,etiquetasPersona,etiquetasMascota ,numeroTelefono ,fotoPerfil ,fotos,fechaNacimiento ,direccion ,codigoPostal,nombreUsuario ,contrasenya,correoElectronico) VALUES
 ("jordi","perez","persona","hola buenos dias","activo","joven",687078172,"flskdjflsj","ldjfslkdjf","1980-08-08","calle 1234",08031,"jordi123","contrasenyaa12","jordicampos.97@gmail.com");
+
+select * from usuarios
