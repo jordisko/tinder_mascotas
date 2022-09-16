@@ -12,14 +12,14 @@ descripcion: DataTypes.STRING,
 etiquetasPersona: DataTypes.STRING,
 etiquetasMascota: DataTypes.STRING,
 numeroTelefono: DataTypes.INTEGER,
-fotoPerfil: DataTypes.BLOB,
-fotos: DataTypes.BLOB,
+fotoPerfil: DataTypes.STRING,
+fotos: DataTypes.STRING,
 fechaNacimiento: DataTypes.DATE,
 direccion: DataTypes.STRING,
 codigoPostal: DataTypes.STRING(5),
 nombreUsuario: DataTypes.STRING,
 contrasenya: DataTypes.STRING,
-razamacota_nombreRaza: DataTypes.STRING,
+razamascota_nombreRaza: DataTypes.STRING,
 correoElectronico: DataTypes.STRING
 
 }, { tableName: 'usuario', timestamps: false }); 
@@ -35,7 +35,7 @@ sequelize.sync().then(() => {
 Usuario.findAll() 
 .then(Usuario => res.json({ 
 ok: true, 
-data: usuarios 
+data: Usuario 
 })) 
 .catch(error => res.json({ 
 ok: false, 
