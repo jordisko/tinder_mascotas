@@ -1,0 +1,119 @@
+
+.containerconfotobackground{
+    background-color:hsl(167, 72%, 60%);
+    background-image:url('https://www.dogalize.com/wp-content/uploads/2017/06/La-sverminazione-e-la-pulizia-del-cucciolo-del-cane-2-800x400-800x400.jpg');
+    background-position:center ;
+    min-height: 25rem;
+    max-width: 420px;
+    margin-left: 2%;
+    margin-right: auto;
+    padding-left: var(--bs-gutter-x,1rem);
+    padding-right: var(--bs-gutter-x,1rem);
+    width: 100%;
+    padding: 2rem;
+    
+
+ 
+}
+.rounded {
+    border-radius: 4px!important;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+div {
+    display: block;
+}
+body {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(18,21,26,0);
+    background-color: #fff;
+    color: #4b5663;
+    font-family: var("Inter",sans-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+}
+.containerdetexto {
+    backdrop-filter:blur(5px) saturate(180%);
+    background:rgba(255,255,255,0.75);
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+}
+.card {
+    word-wrap: break-word;
+    background-clip: border-box;
+    background-color: rgba(255,255,255,.75);
+    border: 1px solid rgba(209,213,219,.3);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    position: relative;
+}
+.p-4 {
+    padding: 1.5rem!important;
+}
+.pb-0 {
+    padding-bottom: 0!important;
+}
+.containerFotoDePerfil:first-child {
+    border-radius: 3px 3px 0 0;
+}
+.containerFotoDePerfil .card-header {
+    background: transparent;
+    margin-bottom: 0;
+    padding: 1.25rem 1.5rem;
+}
+.border-0 {
+    border-width: 0!important;
+    border: 0!important;
+}
+.image-lg, .image-lg img {
+    height: 9rem;
+    width: 9rem;
+}
+.mx-auto {
+    margin-left: auto!important;
+    margin-right: auto!important;
+}
+.rounded-circle {
+    border-radius: 50%!important;
+}
+.p-3 {
+    padding: 1rem!important;
+}
+.border-1 {
+    border-width: 1px!important;
+}
+.border-1 {
+    border-width: 1px!important;
+}
+.border {
+    border: 1px solid rgba(209,213,219,.3)!important;
+}
+img {
+    max-width: 100%;
+}
+img, svg {
+    vertical-align: middle;
+}
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem 1.5rem;
+}
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: calc(var(--bs-gutter-x)/-2);
+    margin-right: calc(var(--bs-gutter-x)/-2);
+    margin-top: calc(var(--bs-gutter-y)*-1);
+}
+
