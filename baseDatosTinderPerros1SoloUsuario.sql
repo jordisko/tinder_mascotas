@@ -7,7 +7,7 @@ USE `basedatostinderperros2` ;
 
 DROP TABLE IF EXISTS `basedatostinderperros2`.`razasmascota` ;
 
-CREATE TABLE IF NOT EXISTS `basedatostinderperros2`.`razasmascota` (
+CREATE TABLE IF NOT EXISTS `basedatostinderperros2`.`razamascota` (
   `nombreRaza` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`nombreRaza`));
 
@@ -29,14 +29,14 @@ CREATE TABLE IF NOT EXISTS `basedatostinderperros2`.`Usuario` (
   `codigoPostal` VARCHAR(5) NULL DEFAULT NULL,
   `nombreUsuario` VARCHAR(15) NOT NULL,
   `contrasenya` VARCHAR(15) NOT NULL,
-  `razasmascota_nombreRaza` VARCHAR(45) DEFAULT NULL,
+  `razamascota_nombreRaza` VARCHAR(45) DEFAULT NULL,
   `correoElectronico` VARCHAR(65) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `nombreUsuario_UNIQUE` (`nombreUsuario` ASC) VISIBLE,
-  INDEX `fk_Usuario_razasmascota_idx` (`razasmascota_nombreRaza` ASC) VISIBLE,
+  INDEX `fk_Usuario_razamascota_idx` (`razamascota_nombreRaza` ASC) VISIBLE,
   CONSTRAINT `fk_Usuario_razasmascota`
-    FOREIGN KEY (`razasmascota_nombreRaza`)
-    REFERENCES `basedatostinderperros2`.`razasmascota` (`nombreRaza`)
+    FOREIGN KEY (`razamascota_nombreRaza`)
+    REFERENCES `basedatostinderperros2`.`razamascota` (`nombreRaza`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `basedatostinderperros2`.`Match` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-INSERT INTO basedatostinderperros2.razasmascota(nombreRaza)VALUES
+INSERT INTO basedatostinderperros2.razamascota(nombreRaza)VALUES
 ("Labrador retriever"),
 ("Bulldog francés"),
 ("Golden retriever"),
@@ -73,7 +73,8 @@ INSERT INTO basedatostinderperros2.razasmascota(nombreRaza)VALUES
 ("Chihuahua");
 
 
-INSERT INTO basedatostinderperros2.usuario(nombre,apellido,tipoUsuario,descripcion,etiquetasPersona,etiquetasMascota ,numeroTelefono ,fotoPerfil ,fotos,fechaNacimiento ,direccion ,codigoPostal,nombreUsuario ,contrasenya,correoElectronico) VALUES
+INSERT INTO basedatostinderperros2.usuario(nombre,apellido,tipoUsuario,descripcion,etiquetasPersona,etiquetasMascota ,numeroTelefono ,fotoPerfil ,fotos,fechaNacimiento ,direccion ,codigoPostal,nombreUsuario ,contrasenya, correoElectronico) VALUES
 ("jordi","perez","persona","hola buenos dias","activo","joven",687078172,"flskdjflsj","ldjfslkdjf","1980-08-08","calle 1234",08031,"jordi123","contrasenyaa12","jordicampos.97@gmail.com");
 
-select * from usuarios
+select * from usuario
+
