@@ -84,4 +84,8 @@ INSERT INTO basedatostinderperros2.matches(usuarioid1,usuarioid2,estado) VALUES
 (1,2,"aceptado");
 
 
-
+SELECT matches.usuarioid1, usuarios.etiquetasPersona , usuarios.etiquetasMascota, usuarios.codigoPostal, matches.usuarioid2
+FROM matches
+LEFT JOIN usuarios
+    ON matches.usuarioid1 = usuarios.id 
+WHERE usuarios.id = matches.usuarioid1;

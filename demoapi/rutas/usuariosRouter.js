@@ -4,7 +4,7 @@ import sequelize from "../loadSequelize.js";
 
 //DEFINICION DEL MODELO 
 
-const Usuario = sequelize.define('usuario', { 
+const Usuario = sequelize.define('usuarios', { 
 nombre: DataTypes.STRING,
 apellido: DataTypes.STRING,
 tipoUsuario: DataTypes.STRING,
@@ -22,7 +22,7 @@ contrasenya: DataTypes.STRING,
 razamascota_nombreRaza: DataTypes.STRING,
 correoElectronico: DataTypes.STRING
 
-}, { tableName: 'usuario', timestamps: false }); 
+}, { tableName: 'usuarios', timestamps: false }); 
 const router = express.Router(); 
 // GET lista de todos los usuarios 
 // vinculamos la ruta /api/usuarios a la función declarada 
