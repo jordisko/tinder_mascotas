@@ -4,6 +4,7 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import "./index.css";
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import App from "./App";
+
 import reportWebVitals from "./reportWebVitals";
 
 import "bootstrap/dist/css/bootstrap.css";

@@ -1,15 +1,17 @@
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import LoginButton from "./login";
+import logo from '../fotos/Redondosinfondo.png';
 
 
 function NavUsuario() {
  
   
     return (   
-         <Navbar>
+         <Navbar className="navdeco" sticky="top">
       <Container>
-        <Navbar.Brand href="#home">Proyecto</Navbar.Brand>
+        <img src={logo} alt="logo" width="100px"/>
+        <Navbar.Brand href="#home">LUCKY </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
        <LoginButton/>
