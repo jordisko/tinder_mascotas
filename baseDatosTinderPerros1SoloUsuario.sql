@@ -40,13 +40,13 @@ CREATE TABLE IF NOT EXISTS `basedatostinderperros2`.`Usuarios` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-DROP TABLE IF EXISTS `basedatostinderperros2`.`Matches` ;
+DROP TABLE IF EXISTS `basedatostinderperros2`.`Likes` ;
 
-CREATE TABLE IF NOT EXISTS `basedatostinderperros2`.`Matches` (
+CREATE TABLE IF NOT EXISTS `basedatostinderperros2`.`Likes` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `usuarioid1` INT NOT NULL,
   `usuarioid2` INT NOT NULL,
-  `estado` VARCHAR(10) NULL,
+  `estado` tinyint NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Usuarios_has_Usuarios_usuarioid2_idx` (`usuarioid2` ASC) VISIBLE,
   INDEX `fk_Usuarios_has_Usuarios_usuarioid1idx` (`usuarioid1` ASC) VISIBLE,
@@ -80,12 +80,10 @@ INSERT INTO basedatostinderperros2.Usuarios(nombre,apellido,tipoUsuario,descripc
 
 
 
-INSERT INTO basedatostinderperros2.matches(usuarioid1,usuarioid2,estado) VALUES
-(1,2,"pendiente");
+INSERT INTO basedatostinderperros2.Likes(usuarioid1,usuarioid2,estado) VALUES
+(1,2,1),
+(2,1,1);
 
 
-SELECT matches.usuarioid1, usuarios.etiquetasPersona , usuarios.etiquetasMascota, usuarios.codigoPostal, matches.usuarioid2
-FROM matches
-LEFT JOIN usuarios
-    ON matches.usuarioid1 = usuarios.id 
-WHERE usuarios.id = matches.usuarioid1
+SELECT usuarioid2 from likes where estado=1 AND usuarioid2 IN (SELECT usuarioid2 FROM likes WHERE usuarioid1 = 1 AND estado=1);
+

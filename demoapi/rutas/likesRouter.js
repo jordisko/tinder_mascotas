@@ -4,7 +4,7 @@ import sequelize from "../loadSequelize.js";
 
 //DEFINICION DEL MODELO 
 
-const Match = sequelize.define('likes', { 
+const Like = sequelize.define('likes', { 
 usuarioid1: DataTypes.INTEGER,
 usuarioid2: DataTypes.INTEGER,
 estado: DataTypes.TINYINT
@@ -20,10 +20,10 @@ const router = express.Router();
 // {ok: false, error: mensaje_de_error} 
 router.get('/', function (req, res, next) { 
 sequelize.sync().then(() => { 
-Match.findAll() 
-.then(Match => res.json({ 
+Like.findAll() 
+.then(Like => res.json({ 
 ok: true, 
-data: Match 
+data: Like 
 })) 
 .catch(error => res.json({ 
 ok: false, 
@@ -40,11 +40,11 @@ error: error
 router.get('/:id', function (req, res, next) {
 
 sequelize.sync().then(() => { 
-Match.findOne({ where: { id: req.params.id } }) 
+Like.findOne({ where: { id: req.params.id } }) 
 // .then(Alumne => Alumne.get({plain: true})) 
-.then(Match => res.json({ 
+.then(Like => res.json({ 
 ok: true, 
-data: Match 
+data: Like 
 })) 
 .catch(error => res.json({ 
 ok: false, 
@@ -60,7 +60,7 @@ error: error
 // POST, creació de un nuev like 
 router.post('/', function (req, res, next) { 
 sequelize.sync().then(() => { 
-Match.create(req.body) 
+Like.create(req.body) 
 .then((item) => res.json({ ok: true, data: item })) 
 .catch((error) => res.json({ ok: false, error })) 
 }).catch((error) => { 
@@ -73,7 +73,7 @@ error: error
 // put modificació de una likes 
 router.put('/:id', function (req, res, next) { 
 sequelize.sync().then(() => { 
-Match.findOne({ where: { id: req.params.id } }) 
+Like.findOne({ where: { id: req.params.id } }) 
 .then((al) => 
 al.update(req.body) 
 ) 
@@ -95,7 +95,7 @@ error: error
 // DELETE elimina Like id 
 router.delete('/:id', function (req, res, next) { 
 sequelize.sync().then(() => { 
-Match.destroy({ where: { id: req.params.id } }) 
+Like.destroy({ where: { id: req.params.id } }) 
 .then((data) => res.json({ ok: true, data })) 
 .catch((error) => res.json({ ok: false, error })) 
 }).catch((error) => { 
