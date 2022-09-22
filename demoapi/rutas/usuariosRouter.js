@@ -13,13 +13,11 @@ etiquetasPersona: DataTypes.STRING,
 etiquetasMascota: DataTypes.STRING,
 numeroTelefono: DataTypes.INTEGER,
 fotoPerfil: DataTypes.STRING,
-fotos: DataTypes.STRING,
 fechaNacimiento: DataTypes.DATE,
 direccion: DataTypes.STRING,
 codigoPostal: DataTypes.STRING(5),
 nombreUsuario: DataTypes.STRING,
 contrasenya: DataTypes.STRING,
-razamascota_nombreRaza: DataTypes.STRING,
 correoElectronico: DataTypes.STRING
 
 }, { tableName: 'usuarios', timestamps: false }); 

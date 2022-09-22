@@ -4,13 +4,11 @@ import sequelize from "../loadSequelize.js";
 
 //DEFINICION DEL MODELO 
 
-const Match = sequelize.define('likes', {
-    usuarioid1: DataTypes.INTEGER,
-    usuarioid2: DataTypes.INTEGER,
-    estado: DataTypes.TINYINT
+const FuturoLike = sequelize.define('futurosLikes', {
+    etiquetasPersona: DataTypes.STRING,
+    etiquetasMascota: DataTypes.STRING
 
-
-}, { tableName: 'likes', timestamps: false });
+}, { tableName: 'usuarios', timestamps: false });
 const router = express.Router();
 // GET lista de todos los likess 
 // vinculamos la ruta /api/likess a la función declarada 
@@ -27,10 +25,10 @@ const router = express.Router();
 // })
 
 
-// GET matches de un id 
+// GET futurosLikes de un id 
 router.get('/:id', function (req, res, next)
 { const id= req.params.id;
-    sequelize.query("SELECT  usuarioid2 from likes where estado=1 AND usuarioid1="+id+" AND usuarioid2 IN (SELECT usuarioid1 FROM likes WHERE usuarioid2 ="+id+ " AND estado=1)GROUP BY usuarioid2",{ type: sequelize.QueryTypes.SELECT })
+    sequelize.query("SELECT id from usuarios where id not in (SELECT usuarioid2 from likes where usuarioid1="+id+") AND id<>"+id+" AND tipoUsuario = (SELECT quebusco from usuarios where id ="+id+") AND codigoPostal =(SELECT codigoPostal from usuarios where id ="+id+") ",{ type: sequelize.QueryTypes.SELECT })
     .then(x => res.json({
         ok: true,
         data: x
@@ -50,7 +48,7 @@ router.get('/:id', function (req, res, next)
 // POST, creació de un nuev like 
 router.post('/', function (req, res, next) {
     sequelize.sync().then(() => {
-        Match.create(req.body)
+        FuturoLike.create(req.body)
             .then((item) => res.json({ ok: true, data: item }))
             .catch((error) => res.json({ ok: false, error }))
     }).catch((error) => {
@@ -63,7 +61,7 @@ router.post('/', function (req, res, next) {
 // put modificació de una likes 
 router.put('/:id', function (req, res, next) {
     sequelize.sync().then(() => {
-        Match.findOne({ where: { id: req.params.id } })
+        FuturoLike.findOne({ where: { id: req.params.id } })
             .then((al) =>
                 al.update(req.body)
             )
@@ -85,7 +83,7 @@ router.put('/:id', function (req, res, next) {
 // DELETE elimina Like id 
 router.delete('/:id', function (req, res, next) {
     sequelize.sync().then(() => {
-        Match.destroy({ where: { id: req.params.id } })
+        FuturoLike.destroy({ where: { id: req.params.id } })
             .then((data) => res.json({ ok: true, data }))
             .catch((error) => res.json({ ok: false, error }))
     }).catch((error) => {
