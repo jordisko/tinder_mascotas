@@ -5,12 +5,6 @@ CREATE SCHEMA IF NOT EXISTS `basedatostinderperros2`;
 
 USE `basedatostinderperros2` ;
 
-DROP TABLE IF EXISTS `basedatostinderperros2`.`razasmascota` ;
-
-CREATE TABLE IF NOT EXISTS `basedatostinderperros2`.`razamascota` (
-  `nombreRaza` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`nombreRaza`));
-
 DROP TABLE IF EXISTS `basedatostinderperros2`.`Usuarios` ;
 
 CREATE TABLE IF NOT EXISTS `basedatostinderperros2`.`Usuarios` (
@@ -23,22 +17,15 @@ CREATE TABLE IF NOT EXISTS `basedatostinderperros2`.`Usuarios` (
   `etiquetasMascota` VARCHAR(255) NULL DEFAULT NULL,
   `numeroTelefono` INT NULL DEFAULT NULL,
   `fotoPerfil` VARCHAR(255) NULL,
-  `fotos` VARCHAR(255) NULL,
   `fechaNacimiento` DATE NULL DEFAULT NULL,
   `direccion` VARCHAR(45) NULL DEFAULT NULL,
   `codigoPostal` VARCHAR(5) NULL DEFAULT NULL,
   `nombreUsuario` VARCHAR(15) NOT NULL,
   `contrasenya` VARCHAR(15) NOT NULL,
-  `razamascota_nombreRaza` VARCHAR(45) DEFAULT NULL,
+  `quebusco` VARCHAR(45) DEFAULT NULL,
   `correoElectronico` VARCHAR(65) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `nombreUsuario_UNIQUE` (`nombreUsuario` ASC) VISIBLE,
-  INDEX `fk_Usuario_razamascota_idx` (`razamascota_nombreRaza` ASC) VISIBLE,
-  CONSTRAINT `fk_Usuario_razasmascota`
-    FOREIGN KEY (`razamascota_nombreRaza`)
-    REFERENCES `basedatostinderperros2`.`razamascota` (`nombreRaza`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  UNIQUE INDEX `nombreUsuario_UNIQUE` (`nombreUsuario` ASC) VISIBLE);
 
 DROP TABLE IF EXISTS `basedatostinderperros2`.`Likes` ;
 
@@ -61,29 +48,24 @@ CREATE TABLE IF NOT EXISTS `basedatostinderperros2`.`Likes` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-INSERT INTO basedatostinderperros2.razamascota(nombreRaza)VALUES
-("Labrador retriever"),
-("Bulldog francés"),
-("Golden retriever"),
-("Pastor alemán"),
-("Caniche"),
-("Bulldog"),
-("Beagle"),
-("Rottweiler"),
-("Labrador"),
-("Chihuahua");
-
-
-INSERT INTO basedatostinderperros2.Usuarios(nombre,apellido,tipoUsuario,descripcion,etiquetasPersona,etiquetasMascota ,numeroTelefono ,fotoPerfil ,fotos,fechaNacimiento ,direccion ,codigoPostal,nombreUsuario,contrasenya, razamascota_nombreRaza ,correoElectronico) VALUES
-("jordi","perez","persona","hola buenos dias","activo","joven",687078172,"flskdjflsj","ldjfslkdjf","1980-08-08","calle 1234",08031,"jordi123","contrasenya12",NULL,"jordicampos.97@gmail.com"),
-("bobby","perez","mascota","muy amigable","muy activo","sociable",687078173,"fdsfdsf","dwewrwerw","2010-09-09","calle 12314214",08031,"bobby123","contrasenyaa12","labrador","bobby123@gmail.com");
-
-
+INSERT INTO basedatostinderperros2.Usuarios(nombre,apellido,tipoUsuario,descripcion,etiquetasPersona,etiquetasMascota ,numeroTelefono ,fotoPerfil,fechaNacimiento ,direccion ,codigoPostal,nombreUsuario,contrasenya, quebusco,correoElectronico) VALUES
+("jordi","perez","persona","hola buenos dias","activo","joven",687078172,"flskdjflsj","1980-08-08","calle 1234",08031,"jordi123","contrasenya12","gato","jordicampos.97@gmail.com"),
+("bobby","perez","gato","muy amigable","muy activo","sociable",687078173,"fdsfdsf","2010-09-09","calle 12314214",08031,"bobby123","contrasenyaa12","persona","bobby123@gmail.com"),
+("hector","fdsfd","gato","hola buenos dias","activo","joven",687078172,"flskdjflsj","1980-08-08","calle 1234",08031,"jordi12","contrasenya12","persona","jordicampos.97@gmail.com"),
+("jordi","perez","persona","hola buenos dias","activo","joven",687078172,"flskdjflsj","1980-08-08","calle 1234",08031,"jordi23","contrasenya2","gato","jordicampos.97@gmail.com");
 
 INSERT INTO basedatostinderperros2.Likes(usuarioid1,usuarioid2,estado) VALUES
 (1,2,1),
-(2,1,1);
+(2,1,1),
+(3,1,1),
+(1,3,1),
+(1,4,0),
+(4,3,1),
+(3,2,0);
 
+USE basedatostinderperros2;
+SELECT  usuarioid2 IN (SELECT usuarioid1 FROM likes WHERE usuarioid2 = 1 AND estado=1) from likes where estado=1 AND usuarioid1=1;
+#SELECT id from 
 
-SELECT usuarioid2 from likes where estado=1 AND usuarioid2 IN (SELECT usuarioid2 FROM likes WHERE usuarioid1 = 1 AND estado=1);
+SELECT id from usuarios where id not in (SELECT usuarioid2 from likes where usuarioid1=3) AND id<>3 AND tipoUsuario = (SELECT quebusco from usuarios where id =3) AND codigoPostal =(SELECT codigoPostal from usuarios where id =3) ;
 
