@@ -13,8 +13,14 @@ CREATE TABLE IF NOT EXISTS `basedatostinderperros2`.`Usuarios` (
   `apellido` VARCHAR(45) NULL,
   `tipoUsuario` VARCHAR(10) NULL,
   `descripcion` VARCHAR(140) NULL DEFAULT NULL,
-  `etiquetasPersona` VARCHAR(255) NULL DEFAULT NULL,
-  `etiquetasMascota` VARCHAR(255) NULL DEFAULT NULL,
+  `etiquetaPersona1` TINYINT NULL DEFAULT NULL, #FAMILIA 
+  `etiquetaPersona2` TINYINT NULL DEFAULT NULL,
+  `etiquetaPersona3` TINYINT NULL DEFAULT NULL,
+  `etiquetaMascota1` TINYINT NULL DEFAULT NULL,
+  `etiquetaMascota2` TINYINT NULL DEFAULT NULL,
+  `etiquetaMascota3` TINYINT NULL DEFAULT NULL,
+  `etiquetaMascota4` TINYINT NULL DEFAULT NULL,
+  `etiquetaMascota5` TINYINT NULL DEFAULT NULL,
   `numeroTelefono` INT NULL DEFAULT NULL,
   `fotoPerfil` VARCHAR(255) NULL,
   `fechaNacimiento` DATE NULL DEFAULT NULL,
@@ -48,16 +54,15 @@ CREATE TABLE IF NOT EXISTS `basedatostinderperros2`.`Likes` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-INSERT INTO basedatostinderperros2.Usuarios(nombre,apellido,tipoUsuario,descripcion,etiquetasPersona,etiquetasMascota ,numeroTelefono ,fotoPerfil,fechaNacimiento ,direccion ,codigoPostal,nombreUsuario,contrasenya, quebusco,correoElectronico) VALUES
-("jordi","perez","persona","hola buenos dias","activo","joven",687078172,"flskdjflsj","1980-08-08","calle 1234",08031,"jordi123","contrasenya12","gato","jordicampos.97@gmail.com"),
-("bobby","perez","gato","muy amigable","muy activo","sociable",687078173,"fdsfdsf","2010-09-09","calle 12314214",08031,"bobby123","contrasenyaa12","persona","bobby123@gmail.com"),
-("hector","fdsfd","gato","hola buenos dias","activo","joven",687078172,"flskdjflsj","1980-08-08","calle 1234",08031,"jordi12","contrasenya12","persona","jordicampos.97@gmail.com"),
-("jordi","perez","persona","hola buenos dias","activo","joven",687078172,"flskdjflsj","1980-08-08","calle 1234",08031,"jordi23","contrasenya2","gato","jordicampos.97@gmail.com");
+INSERT INTO basedatostinderperros2.Usuarios(nombre,apellido,tipoUsuario,descripcion,etiquetaPersona1,etiquetaPersona2 ,etiquetaPersona3, etiquetaMascota1,etiquetaMascota2,etiquetaMascota3,etiquetaMascota4,etiquetaMascota5, numeroTelefono ,fotoPerfil,fechaNacimiento ,direccion ,codigoPostal,nombreUsuario,contrasenya, quebusco,correoElectronico) VALUES
+("jordi","perez","persona","hola buenos dias",1,0,1,1,0,1,0,0,687078172,"flskdjflsj","1980-08-08","calle 1234",08031,"jordi123","contrasenya12","gato","jordicampos.97@gmail.com"),
+("bobby","perez","gato","muy amigable",1,0,1,1,0,1,0,1,687078173,"fdsfdsf","2010-09-09","calle 12314214",08031,"bobby123","contrasenyaa12","persona","bobby123@gmail.com"),
+("hector","fdsfd","gato","hola buenos dias",1,0,1,1,0,1,0,1,687078172,"flskdjflsj","1980-08-08","calle 1234",08031,"jordi12","contrasenya12","persona","jordicampos.97@gmail.com"),
+("jordi","perez","persona","hola buenos dias",1,0,1,1,0,1,0,1,687078172,"flskdjflsj","1980-08-08","calle 1234",08031,"jordi23","contrasenya2","gato","jordicampos.97@gmail.com");
 
 INSERT INTO basedatostinderperros2.Likes(usuarioid1,usuarioid2,estado) VALUES
 (1,2,1),
 (2,1,1),
-(3,1,1),
 (1,3,1),
 (1,4,0),
 (4,3,1),
